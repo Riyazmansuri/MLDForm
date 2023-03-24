@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <div class="form-group" *ngFor="let item of result">
+    <label [for]="item.field_name">{{item.field_name}}</label>
+    <input [name]="item.field_name" [type]="item.field_type" [placeholder]="item.placeholder"
+      [formControlName]="item.table_column" class="form-control">
+    <div class="alert alert-danger"
+      *ngIf="form.controls[item.table_column].touched && !form.controls[item.table_column].valid">
+      {{item.error_message}}
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
